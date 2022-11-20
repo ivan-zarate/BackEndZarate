@@ -1,32 +1,33 @@
 class Usuario {
     constructor(nombre, apellido) {
         this.nombre = nombre,
-        this.apellido = apellido,
-        this.mascotas = [],
-        this.libros=[]
+            this.apellido = apellido,
+            this.mascotas = [],
+            this.libros = []
     }
     getFullName = () => {
-        return (`El nombre es ${this.nombre} y el apellido es ${this.apellido}`)
+        return `El nombre es ${this.nombre} y el apellido es ${this.apellido}`
     }
-    addMascota = (mascota1, mascota2, mascota3) => {
-        (
-            this.mascotas.push(mascota1, mascota2, mascota3)
-        )
+    addPet = (mascota) => {
+        for (let i in mascota) { this.mascotas.push(i) }
     }
-    countMascotas = () => {
-        return (`La cantidad de mascotas ingresas es ${this.mascotas.length}`)
+    countPets = () => {
+        return this.mascotas.length
     }
-    addBook = (libro1, libro2) => {
-        (
-            this.libros.push(libro1, libro2)
-        )
+    addBook = (tituloIngresado, autorIngresado) => {
+
+        let libro = {
+            titulo: tituloIngresado,
+            autor: autorIngresado
+        }
+        this.libros.push(libro)
+
     }
     getBookNames = () => {
-        return (this.libros.map((el)=>
-            el.Titulo
-        ))
+        return this.libros.map((libro) =>
+            libro.titulo
+        )
     }
-
 }
 
 module.exports = Usuario
